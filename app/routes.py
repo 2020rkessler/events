@@ -48,3 +48,11 @@ def results():
     events = list(events.find({}))
     print(events)
     return render_template('index.html', events = events)
+
+@app.route('/delete_events')
+def delete_events():
+    events = mongo.db.events
+
+    events.delete_many({})
+    return ("All events have been deleted")
+
